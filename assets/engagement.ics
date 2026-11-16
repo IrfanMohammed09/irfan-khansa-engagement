@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Irfan and Khansa//Engagement//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:engagement-20261205@irfan-khansa
+DTSTAMP:20261116T000000Z
+DTSTART:20261205T150000Z
+DTEND:20261205T180000Z
+SUMMARY:Engagement of Irfan & Khansa
+DESCRIPTION:Engagement ceremony of Abdul Irfan Mohammed and Khansa Fatima. Begins at 8:30 PM\, after Isha prayer.
+LOCATION:Mashael Banquets\, Sripuram Colony\, Malakpet Extension\, Old Malakpet\, Hyderabad\, Telangana 500036
+URL:https://irfanmohammed09.github.io/irfan-khansa-engagement/
+END:VEVENT
+END:VCALENDAR
