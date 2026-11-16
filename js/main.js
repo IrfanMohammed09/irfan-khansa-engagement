@@ -65,7 +65,6 @@
       gate.classList.add("open");
       setTimeout(function () { root.classList.remove("waiting"); }, 450);
       setTimeout(function () { root.classList.remove("gated"); }, 1900);
-      try { sessionStorage.setItem("invite-opened", "1"); } catch (e) {}
     };
     gate.addEventListener("click", openGate);
     $("gate-open").focus({ preventScroll: true });
