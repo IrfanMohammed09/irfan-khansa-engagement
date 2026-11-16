@@ -80,8 +80,6 @@ a { color: inherit; }
   background: radial-gradient(ellipse at 50% 30%, var(--night) 0%, var(--night-deep) 100%);
   color: var(--hero-ink);
   padding: 3rem 1rem 4rem;
-  display: grid;
-  place-items: center;
 }
 .hero-pattern {
   position: absolute;
@@ -93,8 +91,10 @@ a { color: inherit; }
 }
 .arch {
   position: relative;
-  width: min(100%, 30rem);
-  padding: clamp(8rem, 38%, 11.5rem) 12% 3.5rem;
+  max-width: 30rem;
+  margin: 0 auto;
+  /* Viewport units, not percentages: percentage padding here resolved wrongly in some browsers. */
+  padding: clamp(8rem, 35vw, 11.5rem) clamp(1.75rem, 11vw, 3.6rem) 3.5rem;
 }
 .arch-frame {
   position: absolute;
@@ -114,7 +114,7 @@ a { color: inherit; }
 .arch-frame .inner { stroke-width: .75; opacity: .7; }
 .finial {
   position: absolute;
-  top: clamp(3.4rem, 15%, 5rem);
+  top: clamp(3.4rem, 17vw, 5rem);
   left: 50%;
   width: 2.6rem;
   height: 2.6rem;
@@ -404,7 +404,10 @@ footer .actions { margin-top: 1.8rem; }
   .arch-content > :nth-child(3) { animation-delay: 2.0s; }
   .arch-content > :nth-child(4) { animation-delay: 2.2s; }
   .arch-content > :nth-child(5) { animation-delay: 2.5s; }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes draw {
+    98% { stroke-dasharray: 1; stroke-dashoffset: 0; }
+    to { stroke-dasharray: none; stroke-dashoffset: 0; }
+  }
   @keyframes rise { from { opacity: 0; } to { opacity: 1; } }
 }
 
