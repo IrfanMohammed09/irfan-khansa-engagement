@@ -5,6 +5,37 @@
 
   function $(id) { return document.getElementById(id); }
 
+  /* ---------- Language: English or Urdu ---------- */
+  // Every element with a data-ur attribute holds its Urdu text there; the English is kept in data-en on first switch.
+  var lang = "en";
+  try { if (localStorage.getItem("invite-lang") === "ur") lang = "ur"; } catch (e) {}
+  function shareMessage() { return (lang === "ur" && cfg.shareTextUr) || cfg.shareText; }
+  function applyLang() {
+    var urdu = lang === "ur";
+    root.classList.toggle("ur", urdu);
+    root.lang = urdu ? "ur" : "en";
+    root.dir = urdu ? "rtl" : "ltr";
+    document.querySelectorAll("[data-ur]").forEach(function (node) {
+      if (node.dataset.en === undefined) node.dataset.en = node.innerHTML;
+      node.innerHTML = urdu ? node.dataset.ur : node.dataset.en;
+    });
+    document.querySelectorAll("[data-lang-toggle]").forEach(function (button) {
+      button.textContent = urdu ? "English" : "اردو";
+      button.lang = urdu ? "en" : "ur";
+    });
+    var shareLink = $("share");
+    if (shareLink && cfg.siteUrl) shareLink.href = "https://wa.me/?text=" + encodeURIComponent(shareMessage() + " " + cfg.siteUrl);
+  }
+  document.querySelectorAll("[data-lang-toggle]").forEach(function (button) {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation(); // the toggle on the doors must not open them
+      lang = lang === "ur" ? "en" : "ur";
+      try { localStorage.setItem("invite-lang", lang); } catch (err) {}
+      applyLang();
+    });
+  });
+  applyLang();
+
   /* ---------- Countdown ---------- */
   var target = new Date(cfg.start).getTime();
   var end = new Date(cfg.end).getTime();
@@ -25,10 +56,15 @@
     var diff = target - now;
     if (diff <= 0) {
       clearInterval(timer);
-      title.textContent = "Alhamdulillah";
-      box.outerHTML = "<p class=\"countdown-done\">" +
-        (now > end ? "The ceremony has taken place. Jazakum Allahu khairan for your duas." : "The day of the ceremony is here.") +
-        "</p>";
+      var over = now > end;
+      title.dataset.en = "Alhamdulillah";
+      title.dataset.ur = "الحمدللہ";
+      var done = document.createElement("p");
+      done.className = "countdown-done";
+      done.dataset.en = over ? "The ceremony has taken place. Jazakum Allahu khairan for your duas." : "The day of the ceremony is here.";
+      done.dataset.ur = over ? "تقریب بخیر و خوبی انجام پا چکی۔ آپ کی دعاؤں کے لیے جزاکم اللہ خیراً۔" : "تقریب کا دن آ پہنچا۔";
+      box.parentNode.replaceChild(done, box);
+      applyLang();
       return;
     }
     var s = Math.floor(diff / 1000);
@@ -45,11 +81,10 @@
   /* ---------- Share: native share sheet where available, WhatsApp otherwise ---------- */
   var share = $("share");
   if (share && cfg.siteUrl) {
-    share.href = "https://wa.me/?text=" + encodeURIComponent(cfg.shareText + " " + cfg.siteUrl);
     if (navigator.share) {
       share.addEventListener("click", function (e) {
         e.preventDefault();
-        navigator.share({ title: document.title, text: cfg.shareText, url: cfg.siteUrl }).catch(function () {});
+        navigator.share({ title: document.title, text: shareMessage(), url: cfg.siteUrl }).catch(function () {});
       });
     }
   }
@@ -112,7 +147,7 @@
         setTimeout(function () { node.classList.add("done"); }, 2600);
       });
     }, { threshold: 0.15 });
-    document.querySelectorAll("main > section, .couple, .details, .countdown, footer .closing").forEach(function (group) {
+    document.querySelectorAll("main > section, .couple, .couple-dua, .details, .countdown, footer .closing").forEach(function (group) {
       group.classList.add("rg");
       Array.prototype.forEach.call(group.children, function (child, index) {
         child.style.setProperty("--i", index);

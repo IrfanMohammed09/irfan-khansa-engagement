@@ -7,5 +7,7 @@ window.INVITE = {
 
   siteUrl: "https://irfanmohammed09.github.io/irfan-khansa-engagement/",
 
-  shareText: "Assalamu Alaikum. You are warmly invited to the engagement ceremony of Abdul Irfan Mohammed and Khansa Fatima on Saturday, 5 December 2026, at 8:30 PM, after Isha prayer, at Mashael Banquets, Hyderabad."
+  shareText: "Assalamu Alaikum. You are warmly invited to the engagement ceremony of Abdul Irfan Mohammed and Khansa Fatima on Saturday, 5 December 2026, at 8:30 PM, after Isha prayer, at Mashael Banquets, Hyderabad.",
+
+  shareTextUr: "السلام علیکم۔ آپ کو عبدالعرفان محمد اور خنساء فاطمہ کی تقریبِ منگنی میں شرکت کی پُرخلوص دعوت دی جاتی ہے۔ بروز ہفتہ، 5 دسمبر 2026، رات 8:30 بجے، بعد نمازِ عشاء، مشاعل بینکوئٹس، حیدرآباد۔"
 };

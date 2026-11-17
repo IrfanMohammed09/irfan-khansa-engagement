@@ -18,8 +18,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Nastaliq+Urdu:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=8">
 <script>
 /* Shows the opening doors before first paint. Falls back to the plain page if the main script never loads. */
 (function () {
@@ -68,9 +68,12 @@
   <div class="gate-door gate-right"><svg class="hero-pattern" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#khatam)"/></svg></div>
   <div class="gate-card">
     <svg class="gate-seal" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><use href="#star8"/></svg>
-    <p class="gate-kicker">Engagement invitation</p>
-    <p class="gate-names">Irfan <span>and</span> Khansa</p>
-    <button class="btn on-dark" id="gate-open" type="button">Open invitation</button>
+    <p class="gate-salam" lang="ar">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ</p>
+    <p class="gate-salam-en en-only">Assalamu Alaikum wa Rahmatullahi wa Barakatuh</p>
+    <p class="gate-kicker" data-ur="دعوت نامہ رسمِ منگنی">Engagement invitation</p>
+    <p class="gate-names" data-ur="عرفان <span>اور</span> خنساء">Irfan <span>and</span> Khansa</p>
+    <button class="btn on-dark" id="gate-open" type="button" data-ur="دعوت نامہ کھولیں">Open invitation</button>
+    <button class="lang-toggle" type="button" data-lang-toggle>اردو</button>
   </div>
 </div>
 
@@ -96,14 +99,15 @@
     </svg>
 
     <div class="arch-content">
-      <p class="bismillah" lang="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
-      <p class="bismillah-en">In the name of Allah, the Most Gracious, the Most Merciful</p>
-      <p class="occasion">The engagement ceremony of</p>
-      <h1 class="names"><span class="nm">Irfan</span> <span class="amp">and</span> <span class="nm">Khansa</span></h1>
+      <p class="bismillah" lang="ar">﷽</p>
+      <p class="bismillah-en" data-ur="شروع اللہ کے نام سے جو بڑا مہربان، نہایت رحم والا ہے">In the name of Allah, the Most Gracious, the Most Merciful</p>
+      <p class="occasion" data-ur="تقریبِ منگنی">The engagement ceremony of</p>
+      <h1 class="names" data-ur="<span class=&quot;nm&quot;>عرفان</span> <span class=&quot;amp&quot;>اور</span> <span class=&quot;nm&quot;>خنساء</span>"><span class="nm">Irfan</span> <span class="amp">and</span> <span class="nm">Khansa</span></h1>
       <div class="hero-meta">
-        <p class="date">Saturday, 5 December 2026</p>
-        <p>8:30 PM, after Isha prayer, Insha’Allah</p>
-        <p class="soft">Mashael Banquets, Hyderabad</p>
+        <p class="date" data-ur="بروز ہفتہ، 5 دسمبر 2026">Saturday, 5 December 2026</p>
+        <p class="hijri" data-ur="24 جمادی الثانی 1448ھ">24 Jumada al-Thani 1448 AH</p>
+        <p data-ur="رات 8:30 بجے، بعد نمازِ عشاء، ان شاء اللہ">8:30 PM, after Isha prayer, Insha’Allah</p>
+        <p class="soft" data-ur="مشاعل بینکوئٹس، حیدرآباد">Mashael Banquets, Hyderabad</p>
       </div>
     </div>
   </div>
@@ -111,9 +115,10 @@
 
 <nav class="site-nav" aria-label="Sections">
   <ul>
-    <li><a href="#invitation">Invitation</a></li>
-    <li><a href="#ceremony">Ceremony</a></li>
-    <li><a href="#venue">Venue</a></li>
+    <li><a href="#invitation" data-ur="دعوت نامہ">Invitation</a></li>
+    <li><a href="#ceremony" data-ur="تقریب">Ceremony</a></li>
+    <li><a href="#venue" data-ur="مقام">Venue</a></li>
+    <li><button class="lang-toggle" type="button" data-lang-toggle>اردو</button></li>
   </ul>
   <div class="progress" id="progress" aria-hidden="true"></div>
 </nav>
@@ -121,82 +126,93 @@
 <main>
   <section aria-label="Verse from the Qur’an">
     <p class="ayah" lang="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
-    <p class="ayah-en">“And among His signs is that He created for you spouses from among yourselves, so that you may find tranquility in them, and He placed between you love and mercy.”</p>
-    <p class="ayah-ref">Surah Ar-Rum, 30:21</p>
+    <p class="ayah-en" data-ur="’’اور اس کی نشانیوں میں سے ہے کہ اس نے تمہارے لیے تمہاری ہی جنس سے جوڑے بنائے تاکہ تم ان سے سکون پاؤ، اور تمہارے درمیان محبت اور رحمت رکھ دی۔‘‘">“And among His signs is that He created for you spouses from among yourselves, so that you may find tranquility in them, and He placed between you love and mercy.”</p>
+    <p class="ayah-ref" data-ur="سورۃ الروم، 30:21">Surah Ar-Rum, 30:21</p>
   </section>
 
   <div class="star-rule" aria-hidden="true"><svg><use href="#star8"/></svg></div>
 
   <section id="invitation">
-    <h2>With the blessings of Allah Subhanahu wa Ta’ala</h2>
-    <p class="invite-line">our families request the honour of your presence and your duas at the engagement ceremony of</p>
+    <h2 data-ur="اللہ سبحانہ و تعالیٰ کے فضل و کرم سے">With the blessings of Allah Subhanahu wa Ta’ala</h2>
+    <p class="invite-line" data-ur="ہمارے خاندان درج ذیل تقریبِ منگنی میں آپ کی تشریف آوری اور دعاؤں کے متمنی ہیں">our families request the honour of your presence and your duas at the engagement ceremony of</p>
 
     <div class="couple">
       <div class="person">
         <p class="ar-name" lang="ar">عرفان</p>
-        <p class="full-name">Abdul Irfan Mohammed</p>
-        <p class="parent">Son of<br>Late Mr. Yousuf Mohammed</p>
+        <p class="full-name" data-ur="عبدالعرفان محمد">Abdul Irfan Mohammed</p>
+        <p class="parent" data-ur="فرزندِ<br>جناب یوسف محمد (مرحوم)">Son of<br>Late Mr. Yousuf Mohammed</p>
       </div>
-      <p class="joiner">with</p>
+      <p class="joiner" data-ur="ہمراہ">with</p>
       <div class="person">
         <p class="ar-name" lang="ar">خنساء</p>
-        <p class="full-name">Khansa Fatima</p>
-        <p class="parent">Daughter of<br>Mr. Mohammed Khaled</p>
+        <p class="full-name" data-ur="خنساء فاطمہ">Khansa Fatima</p>
+        <p class="parent" data-ur="دخترِ<br>جناب محمد خالد">Daughter of<br>Mr. Mohammed Khaled</p>
       </div>
+    </div>
+
+    <div class="couple-dua">
+      <p class="dua-ar" lang="ar">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+      <p class="dua-en" data-ur="’’اللہ تم دونوں کو برکت دے، تم دونوں پر برکتیں نازل فرمائے اور تم دونوں کو خیر میں جمع رکھے۔‘‘">“May Allah bless you both, shower His blessings upon you, and unite you in goodness.”</p>
     </div>
   </section>
 
   <div class="star-rule" aria-hidden="true"><svg><use href="#star8"/></svg></div>
 
   <section id="ceremony">
-    <h2>The ceremony</h2>
+    <h2 data-ur="تقریب">The ceremony</h2>
     <dl class="details">
       <div>
-        <dt>Date</dt>
-        <dd>Saturday, 5 December 2026</dd>
+        <dt data-ur="تاریخ">Date</dt>
+        <dd data-ur="بروز ہفتہ، 5 دسمبر 2026<small>24 جمادی الثانی 1448ھ</small>">Saturday, 5 December 2026
+          <small>24 Jumada al-Thani 1448 AH</small>
+        </dd>
       </div>
       <div>
-        <dt>Time</dt>
-        <dd>8:30 PM
+        <dt data-ur="وقت">Time</dt>
+        <dd data-ur="رات 8:30 بجے<small>بعد نمازِ عشاء</small>">8:30 PM
           <small>After Isha prayer</small>
         </dd>
       </div>
       <div>
-        <dt>Venue</dt>
-        <dd>Mashael Banquets
+        <dt data-ur="مقام">Venue</dt>
+        <dd data-ur="مشاعل بینکوئٹس<small>سری پورم کالونی، ملک پیٹ ایکسٹینشن، اولڈ ملک پیٹ، حیدرآباد، تلنگانہ 500036</small>">Mashael Banquets
           <small>Sripuram Colony, Malakpet Extension, Old Malakpet, Hyderabad, Telangana 500036</small>
         </dd>
       </div>
+      <div>
+        <dt data-ur="عشائیہ">Dinner</dt>
+        <dd data-ur="تقریب کے بعد عشائیہ کا اہتمام ہے">Will follow the ceremony</dd>
+      </div>
     </dl>
     <div class="actions">
-      <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Engagement+of+Irfan+%26+Khansa&amp;dates=20261205T150000Z/20261205T180000Z&amp;details=Engagement+ceremony+of+Abdul+Irfan+Mohammed+and+Khansa+Fatima.+Begins+at+8:30+PM,+after+Isha+prayer.&amp;location=Mashael+Banquets,+Sripuram+Colony,+Malakpet+Extension,+Old+Malakpet,+Hyderabad,+Telangana+500036">Add to Google Calendar</a>
-      <a class="btn ghost" href="assets/engagement.ics" download="irfan-khansa-engagement.ics">Apple or Outlook calendar</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Engagement+of+Irfan+%26+Khansa&amp;dates=20261205T150000Z/20261205T180000Z&amp;details=Engagement+ceremony+of+Abdul+Irfan+Mohammed+and+Khansa+Fatima.+Begins+at+8:30+PM,+after+Isha+prayer.+Dinner+will+follow.&amp;location=Mashael+Banquets,+Sripuram+Colony,+Malakpet+Extension,+Old+Malakpet,+Hyderabad,+Telangana+500036" data-ur="گوگل کیلنڈر میں شامل کریں">Add to Google Calendar</a>
+      <a class="btn ghost" href="assets/engagement.ics" download="irfan-khansa-engagement.ics" data-ur="ایپل یا آؤٹ لک کیلنڈر">Apple or Outlook calendar</a>
     </div>
   </section>
 
   <div class="star-rule" aria-hidden="true"><svg><use href="#star8"/></svg></div>
 
   <section>
-    <h2 id="count-title">Counting down to the day</h2>
+    <h2 id="count-title" data-ur="تقریب میں باقی وقت">Counting down to the day</h2>
     <div class="countdown" id="countdown" role="timer" aria-labelledby="count-title">
-      <div><b id="cd-d">0</b><span>days</span></div>
-      <div><b id="cd-h">0</b><span>hours</span></div>
-      <div><b id="cd-m">0</b><span>minutes</span></div>
-      <div><b id="cd-s">0</b><span>seconds</span></div>
+      <div><b id="cd-d">0</b><span data-ur="دن">days</span></div>
+      <div><b id="cd-h">0</b><span data-ur="گھنٹے">hours</span></div>
+      <div><b id="cd-m">0</b><span data-ur="منٹ">minutes</span></div>
+      <div><b id="cd-s">0</b><span data-ur="سیکنڈ">seconds</span></div>
     </div>
   </section>
 
   <div class="star-rule" aria-hidden="true"><svg><use href="#star8"/></svg></div>
 
   <section id="venue">
-    <h2>The venue</h2>
-    <p class="venue-address">Mashael Banquets, Sripuram Colony, Malakpet Extension, Old Malakpet, Hyderabad, Telangana 500036</p>
+    <h2 data-ur="مقامِ تقریب">The venue</h2>
+    <p class="venue-address" data-ur="مشاعل بینکوئٹس، سری پورم کالونی، ملک پیٹ ایکسٹینشن، اولڈ ملک پیٹ، حیدرآباد، تلنگانہ 500036">Mashael Banquets, Sripuram Colony, Malakpet Extension, Old Malakpet, Hyderabad, Telangana 500036</p>
     <div class="map">
       <iframe title="Map showing Mashael Banquets, Old Malakpet, Hyderabad" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m2!2m1!1sMashael+Banquets,+Sripuram+Colony,+Malakpet+Extension,+Old+Malakpet,+Hyderabad,+Telangana+500036"></iframe>
     </div>
     <div class="actions">
-      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Mashael+Banquets,+Sripuram+Colony,+Malakpet+Extension,+Old+Malakpet,+Hyderabad,+Telangana+500036/data=!4m2!3m1!1s0x3bcb9900394e75d9:0xe0b11b1370282903">Open in Google Maps</a>
-      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mashael+Banquets%2C+Sripuram+Colony%2C+Malakpet+Extension%2C+Old+Malakpet%2C+Hyderabad%2C+Telangana+500036">Get directions</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Mashael+Banquets,+Sripuram+Colony,+Malakpet+Extension,+Old+Malakpet,+Hyderabad,+Telangana+500036/data=!4m2!3m1!1s0x3bcb9900394e75d9:0xe0b11b1370282903" data-ur="گوگل میپس میں کھولیں">Open in Google Maps</a>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mashael+Banquets%2C+Sripuram+Colony%2C+Malakpet+Extension%2C+Old+Malakpet%2C+Hyderabad%2C+Telangana+500036" data-ur="راستہ معلوم کریں">Get directions</a>
     </div>
   </section>
 </main>
@@ -205,15 +221,15 @@
   <svg class="hero-pattern" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#khatam)"/></svg>
   <div class="closing">
     <p class="dua" lang="ar">جَزَاكُمُ اللَّهُ خَيْرًا</p>
-    <p>Your presence and your duas will be the most precious gift to us.</p>
-    <p class="soft">With warm regards from both families</p>
+    <p data-ur="آپ کی تشریف آوری اور دعائیں ہمارے لیے سب سے قیمتی تحفہ ہوں گی۔">Your presence and your duas will be the most precious gift to us.</p>
+    <p class="soft" data-ur="دونوں خاندانوں کی جانب سے پُرخلوص سلام کے ساتھ">With warm regards from both families</p>
     <div class="actions">
-      <a class="btn on-dark" id="share" target="_blank" rel="noopener" href="https://wa.me/?text=https%3A%2F%2Firfanmohammed09.github.io%2Firfan-khansa-engagement%2F">Share this invitation</a>
+      <a class="btn on-dark" id="share" target="_blank" rel="noopener" href="https://wa.me/?text=https%3A%2F%2Firfanmohammed09.github.io%2Firfan-khansa-engagement%2F" data-ur="یہ دعوت نامہ شیئر کریں">Share this invitation</a>
     </div>
   </div>
 </footer>
 
-<script src="js/config.js" defer></script>
-<script src="js/main.js" defer></script>
+<script src="js/config.js?v=8" defer></script>
+<script src="js/main.js?v=8" defer></script>
 </body>
 </html>
